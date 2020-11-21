@@ -1,0 +1,45 @@
+{
+  "advertisements": [
+    {
+      "id": 1,
+      "title": "Project Manager",
+      "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
+      "likes": 0,
+      "type": "Full-time",
+      "category": "Management",
+      "appliedUsers": [],
+      "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Data Analyst",
+      "description": "In this role you will be responsible for building and maintaining KPI dashboards, creating operational reports, using data based approaches to identify areas of opportunity, and holding the vendor team accountable to KPIs. ",
+      "likes": 0,
+      "type": "Part-time",
+      "category": "Data Science",
+      "appliedUsers": [],
+      "imageUrl": "https://wallpapercave.com/wp/dG3iPjW.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Risk Specialist with German",
+      "description": "To ensure the expansion of our service delivery center in Sofia we are looking for business to business support specialists, who will help the customers of one of the biggest online payment platforms in the world, offering a fully integrated suite of payment products.",
+      "likes": 0,
+      "type": "Remote",
+      "category": "Risk Analyst",
+      "appliedUsers": [],
+      "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "email": "admin@admin.gmail",
+      "password": "admin",
+      "role": "admin",
+      "appliedFor": [],
+      "acceptedFor": []
+    }
+  ]
+}

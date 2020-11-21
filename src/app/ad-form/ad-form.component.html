@@ -1,3 +1,7 @@
+<h3>
+    {{ad.id ? 'Update' : 'Create'}}
+</h3>
+
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="title">Ttile:</label>
@@ -48,7 +52,7 @@
     </div>
 
     <div class="form-group">
-        <label for="imageUrl">Category:</label>
+        <label for="imageUrl">Image link:</label>
         <input type="text" 
                class="form-control" 
                id="imageUrl"
@@ -61,7 +65,14 @@
     <div class="form-group">
         <button type="submit" 
                 class="btn btn-primary"
-                [disabled]="formGroup.invalid">Add</button>
+                [disabled]="formGroup.invalid">
+        {{ad.id ? 'Update' : 'Add'}}
+        </button>
+
+        <button class="btn btn-primary ml-1"
+                routerLink="/job-ads">
+         Back
+        </button>
     </div>
 
 </form>

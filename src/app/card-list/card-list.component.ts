@@ -1,55 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Advertisement } from '../advertisement.interface';
+import { AdService } from '../advertisement.service';
 
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss']
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent implements OnInit, OnDestroy {
 
   advertisements: Advertisement[];
 
-  constructor() { }
+  destroy$ = new Subject<boolean>();
+
+  constructor(private adService: AdService) {
+   }
 
   ngOnInit(): void {
-    this.advertisements = [
-      {
-        id: 1,
-        title: 'Ad 1',
-        description: 'This is add 1',
-        likes: 0,
-        type: 'Full-time',
-        category: 'New add',
-        imageUrl: 'https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg'
-      },
-      {
-        id: 2,
-        title: 'Ad 2',
-        description: 'This is add 2',
-        likes: 0,
-        type: 'Part-time',
-        category: 'New add',
-        imageUrl: 'https://wallpapercave.com/wp/dG3iPjW.jpg'
-      },
-      {
-        id: 3,
-        title: 'Ad 3',
-        description: 'This is add 3',
-        likes: 0,
-        type: 'Remote',
-        category: 'New add',
-        imageUrl: 'https://lh3.googleusercontent.com/proxy/9SdIt7E1qOF9l4dL-coJXTXXHrL9rLoaUun0_jlUj2poibdEqhJL5QhX5MEcPJjj9lzO8vke-x24AYMelijC1Iph-rTML7M_Eq1tUANyryBy8yAYVkvK9xc'
-      }
-    ];
+    this.getContent();
   }
 
-  onAdSubmit(ad: Advertisement): void {
-    const newAd: Advertisement = {
-      ...ad,
-      id: this.advertisements.length + 1
-    };
-    this.advertisements.push(newAd);
+  ngOnDestroy(): void {
+    this.destroy$.next(true); // ????
+    this.destroy$.unsubscribe();
   }
 
+  onAdDelete(adId: number): void {
+    this.adService.deleteAd(adId).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(
+      () => {
+        this.getContent();
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
+
+  private getContent(): void{
+    this.adService.getAds().pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(
+      (response) => {
+        this.advertisements = response;
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
 }

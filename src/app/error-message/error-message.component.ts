@@ -25,6 +25,10 @@ export class ErrorMessageComponent implements OnInit {
         return `Not enough characters! Min length is ${this.control.errors.minlength.requiredLength}.
         Actual length: ${this.control.errors.minlength.actualLength}.`;
       }
+
+      if (this.control.errors.email){
+        return 'Not an actual email!';
+      }
     }
     return '';
   }

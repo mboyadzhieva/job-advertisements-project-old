@@ -9,7 +9,12 @@ import { Advertisement } from '../advertisement.interface';
 export class CardItemComponent implements OnInit {
 
   @Input() advertisement: Advertisement;
+
   @Output() adLiked = new EventEmitter<Advertisement>();
+  @Output() adDisliked = new EventEmitter<Advertisement>();
+  @Output() adSelectedForDelete = new EventEmitter<number>();
+
+  clicked = false;
 
   constructor() { }
 
@@ -20,4 +25,7 @@ export class CardItemComponent implements OnInit {
     this.adLiked.emit(this.advertisement);
   }
 
+  onDislikeClick(): void{
+    this.adDisliked.emit(this.advertisement);
+  }
 }

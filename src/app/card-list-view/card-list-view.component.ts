@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Advertisement } from '../advertisement.interface';
 
 @Component({
@@ -9,6 +9,9 @@ import { Advertisement } from '../advertisement.interface';
 export class CardListViewComponent {
 
   @Input() advertisements: Advertisement[];
+
+  @Output() adDeleted = new EventEmitter<number>();
+
   selectedAd: Advertisement;
 
   constructor() {
@@ -17,5 +20,11 @@ export class CardListViewComponent {
   onAdLiked(ad: Advertisement): void{
     this.selectedAd = ad;
     ad.likes++;
+    // handle actual likes++ here
+  }
+
+  onAdDisliked(ad: Advertisement): void{
+    this.selectedAd = ad;
+    ad.likes--;
   }
 }

@@ -1,4 +1,4 @@
-import { User } from './user.model';
+import { User } from './auth/user.model';
 
 export interface Advertisement {
     id?: number;

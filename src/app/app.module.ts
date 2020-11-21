@@ -11,6 +11,29 @@ import { AdFormComponent } from './ad-form/ad-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardListComponent } from './card-list/card-list.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { HttpClientModule } from '@angular/common/http';
+import { Route, RouterModule } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
+import { CommonModule } from '@angular/common';
+
+const routes: Route[] = [
+  {
+    path: 'job-ads',
+    component: CardListComponent
+  },
+  {
+    path: 'job-ads/create',
+    component: AdFormComponent
+  },
+  {
+    path: 'job-ads/edit/:id',
+    component: AdFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -22,12 +45,16 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     CardItemComponent,
     AdFormComponent,
     CardListComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

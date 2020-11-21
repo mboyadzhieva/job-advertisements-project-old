@@ -1,4 +1,4 @@
-import { Advertisement } from './advertisement.interface';
+import { Advertisement } from '../advertisement.interface';
 
 export interface User {
     id?: number;

@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-md-4" *ngFor="let advertisement of advertisements">
-        <app-card-item [advertisement]="advertisement" (adLiked)="onAdLiked($event)"></app-card-item>        
+        <app-card-item [advertisement]="advertisement" 
+                       (adLiked)="onAdLiked($event)"
+                       (adDisliked)="onAdDisliked($event)"
+                       (adSelectedForDelete)="adDeleted.emit($event)">
+        </app-card-item>        
     </div>
 </div>

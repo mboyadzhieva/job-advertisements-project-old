@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="card mb-4" style="width: 18rem;">
-    <img class="card-img-top" src={{advertisement.imageUrl}} width="500" height="160" alt="Job offer image">
+    <img class="card-img-top" src={{advertisement.imageUrl}} height="180" alt="Job offer image">
     <div class="card-body">
       <h5 class="card-title">{{advertisement.title}}</h5>
       <p class="card-text">Description: {{advertisement.description}}</p>
@@ -10,9 +12,30 @@
       <li class="list-group-item">Likes: {{advertisement.likes}}</li>
     </ul>
     <div class="card-body">
+        <button *ngIf="!clicked else dislike"
+                type="button"
+                class="btn btn-primary mr-1"
+                (click)="onLikeClick(); clicked = true;">
+                <i class="fa fa-thumbs-up"></i>             
+              </button>
+        <ng-template #dislike>
+            <button type="button"
+                    class="btn btn-primary mr-1"
+                    (click)="onDislikeClick(); clicked = false;">
+            <i class="fa">&#xf165;</i>                
+          </button>  
+        </ng-template>
+        <button type="button" 
+                class="btn btn-primary mr-1">
+         Apply
+        </button>
+
         <button type="button"
                 class="btn btn-primary mr-1"
-                (click)="onLikeClick()">Like</button>
-        <button type="button" class="btn btn-primary">Send CV</button>
+                [routerLink]="['/job-ads', 'edit', advertisement.id]">
+        Edit
+      </button>
+      
+        <button type="button" class="btn btn-primary" (click)="adSelectedForDelete.emit(advertisement.id)">Del</button>
     </div>
 </div>
