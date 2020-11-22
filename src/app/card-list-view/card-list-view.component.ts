@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Advertisement } from '../advertisement.interface';
+import { AdService } from '../advertisement.service';
 
 @Component({
   selector: 'app-card-list-view',
@@ -11,20 +12,24 @@ export class CardListViewComponent {
   @Input() advertisements: Advertisement[];
 
   @Output() adDeleted = new EventEmitter<number>();
+  @Output() adLiked = new EventEmitter<Advertisement>();
+  @Output() adDisliked = new EventEmitter<Advertisement>();
+  @Output() adSelectedToApplyFor = new EventEmitter<Advertisement>();
 
   selectedAd: Advertisement;
 
-  constructor() {
+  constructor(private adService: AdService) {
    }
 
   onAdLiked(ad: Advertisement): void{
-    this.selectedAd = ad;
-    ad.likes++;
-    // handle actual likes++ here
+    this.adLiked.emit(ad);
   }
 
   onAdDisliked(ad: Advertisement): void{
-    this.selectedAd = ad;
-    ad.likes--;
+    this.adDisliked.emit(ad);
+  }
+
+  onAdSelectedForApplication(ad: Advertisement): void{
+    this.adSelectedToApplyFor.emit(ad);
   }
 }

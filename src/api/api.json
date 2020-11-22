@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Project Manager",
       "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
-      "likes": 0,
+      "likes": 1,
       "type": "Full-time",
       "category": "Management",
       "appliedUsers": [],
@@ -14,7 +14,7 @@
       "id": 2,
       "title": "Data Analyst",
       "description": "In this role you will be responsible for building and maintaining KPI dashboards, creating operational reports, using data based approaches to identify areas of opportunity, and holding the vendor team accountable to KPIs. ",
-      "likes": 0,
+      "likes": 1,
       "type": "Part-time",
       "category": "Data Science",
       "appliedUsers": [],
@@ -29,17 +29,58 @@
       "category": "Risk Analyst",
       "appliedUsers": [],
       "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg"
+    },
+    {
+      "id": 4,
+      "title": "New Job Offer",
+      "description": "New job description",
+      "type": "Remote",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "likes": 0,
+      "appliedUsers": []
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Administrator",
+      "name": "Administrator123",
       "email": "admin@admin.gmail",
-      "password": "admin",
+      "password": "admin12345",
       "role": "admin",
-      "appliedFor": [],
+      "appliedFor": [
+        {
+          "id": 4,
+          "title": "New Job Offer",
+          "description": "New job description",
+          "type": "Remote",
+          "category": "New category",
+          "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+          "likes": 0,
+          "appliedUsers": []
+        }
+      ],
       "acceptedFor": []
+    },
+    {
+      "name": "TestUser",
+      "email": "testUser@testing.com",
+      "password": "123456",
+      "rePassword": "123456",
+      "role": "Person",
+      "appliedFor": [],
+      "acceptedFor": [],
+      "id": 2
+    },
+    {
+      "name": "TestCompany",
+      "email": "testCompany@testing.com",
+      "password": "678910",
+      "rePassword": "678910",
+      "role": "Company",
+      "appliedFor": [],
+      "acceptedFor": [],
+      "id": 3
     }
   ]
 }

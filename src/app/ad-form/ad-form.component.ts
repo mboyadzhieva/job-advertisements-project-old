@@ -29,7 +29,9 @@ export class AdFormComponent implements OnInit, OnDestroy {
       description: '',
       type: '',
       category: '',
-      imageUrl: ''
+      imageUrl: '',
+      likes: 0,
+      appliedUsers: []
     };
    }
 
@@ -38,8 +40,7 @@ export class AdFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (params) => {
-        const id = params.id;
-
+        const id = params.id; // id is set correctly
         if (id){
           this.getAd(id);
         }
@@ -55,18 +56,28 @@ export class AdFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void{
+    this.ad.title = this.formGroup.value.title;
+    this.ad.description = this.formGroup.value.description;
+    this.ad.type = this.formGroup.value.type;
+    this.ad.category = this.formGroup.value.category;
+    this.ad.imageUrl = this.formGroup.value.imageUrl;
+
     const ad: Advertisement = {
-      ...this.formGroup.value,
-      likes: 0,
-      appliedUsers: []
+      ...this.formGroup.value
     };
 
     if (!ad.id){
-      this.adService.createAd({...ad}).pipe(
+      this.adService.createAd(
+        {
+          ...ad,
+          likes: 0,
+          appliedUsers: []
+        }).pipe(
         take(1)
       ).subscribe(
         () => {
           this.router.navigate(['/job-ads']);
+          console.log(ad);
         },
         (error) => {
           console.log(error);
@@ -75,11 +86,11 @@ export class AdFormComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.adService.udpateAd(ad).pipe(
+    this.adService.udpateAd(this.ad).pipe(
       takeUntil(this.destroy$)
     ).subscribe(
       () => {
-        this.router.navigate(['/job-ads']);
+        this.router.navigate(['job-ads']);
       },
       (error) => {
         console.log(error);
@@ -92,15 +103,18 @@ export class AdFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {
+        console.log('response' + response);
         this.ad = response;
         this.buildForm();
+      },
+      (error) => {
+        console.log(error);
       });
     }
 
     private buildForm(): void{
 
       this.formGroup = this.fb.group({
-        id: this.ad.id,
         title: [this.ad.title, [Validators.required, Validators.minLength(10)]],
         description: [this.ad.description, [Validators.required, Validators.minLength(10)]],
         type: [this.ad.type, [Validators.required]],

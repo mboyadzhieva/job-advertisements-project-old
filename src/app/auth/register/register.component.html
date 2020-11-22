@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="text-center">Register</h4>
+    </div>
+</div>
+
+<div class="row" *ngIf="errorMsg">
+    <div class="col-md-12">
+        <p class="text-center text-danger">{{errorMsg}}</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">            
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" 
+                       class="form-control" 
+                       id="name"
+                       formControlName="name"
+                       placeholder="Enter name">        
+        
+            <app-error-message [control]="formGroup.get('name')"></app-error-message>
+        
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" 
+                       class="form-control" 
+                       id="email"
+                       formControlName="email"
+                       placeholder="Enter email">        
+        
+            <app-error-message [control]="formGroup.get('email')"></app-error-message>
+        
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" 
+                       class="form-control" 
+                       id="password"
+                       formControlName="password"
+                       placeholder="Enter password">        
+        
+            <app-error-message [control]="formGroup.get('password')"></app-error-message>
+        
+            </div>
+
+            <div class="form-group">
+                <label for="rePassword">Repeat password:</label>
+                <input type="password" 
+                       class="form-control" 
+                       id="rePassword"
+                       formControlName="rePassword"
+                       placeholder="Enter password again">        
+        
+            <app-error-message [control]="formGroup.get('rePassword')"></app-error-message>
+        
+            </div>
+
+            <div class="form-group">
+                <label for="role">Are you:</label>
+                <select class="browser-default custom-select form-control" 
+                        id="role"
+                        formControlName="role">
+                <option value="Person">Looking for a job</option>
+                <option value="Company">Providing job postitions</option>
+                </select>
+            <app-error-message [control]="formGroup.get('role')"></app-error-message>    
+                
+            </div>
+
+            <div class="form-group">
+                <button type="submit" 
+                        class="btn btn-primary"
+                        [disabled]="formGroup.invalid">
+                Sign up
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

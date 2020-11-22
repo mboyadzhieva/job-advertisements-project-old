@@ -14,6 +14,7 @@ export class CardItemComponent implements OnInit {
   @Output() adDisliked = new EventEmitter<Advertisement>();
   @Output() adSelectedForDelete = new EventEmitter<number>();
 
+  @Output() adSelectedToApplyFor = new EventEmitter<Advertisement>();
   clicked = false;
 
   constructor() { }
@@ -27,5 +28,9 @@ export class CardItemComponent implements OnInit {
 
   onDislikeClick(): void{
     this.adDisliked.emit(this.advertisement);
+  }
+
+  onApplyBtnClick(): void{
+    this.adSelectedToApplyFor.emit(this.advertisement);
   }
 }

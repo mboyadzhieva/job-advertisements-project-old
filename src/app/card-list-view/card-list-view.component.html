@@ -3,7 +3,8 @@
         <app-card-item [advertisement]="advertisement" 
                        (adLiked)="onAdLiked($event)"
                        (adDisliked)="onAdDisliked($event)"
-                       (adSelectedForDelete)="adDeleted.emit($event)">
+                       (adSelectedForDelete)="adDeleted.emit($event)"
+                       (adSelectedToApplyFor)="onAdSelectedForApplication($event)">
         </app-card-item>        
     </div>
 </div>

@@ -15,23 +15,46 @@ import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { CommonModule } from '@angular/common';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { NonAuthGuard } from './auth/guards/non-auth.guard';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 const routes: Route[] = [
   {
     path: 'job-ads',
-    component: CardListComponent
+    component: CardListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-ads/create',
-    component: AdFormComponent
+    component: AdFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-ads/edit/:id',
-    component: AdFormComponent
+    component: AdFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NonAuthGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [NonAuthGuard]
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    component: CardListComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -46,7 +69,9 @@ const routes: Route[] = [
     AdFormComponent,
     CardListComponent,
     ErrorMessageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

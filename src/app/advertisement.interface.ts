@@ -4,9 +4,9 @@ export interface Advertisement {
     id?: number;
     title: string;
     description: string;
-    likes?: number;
+    likes: number;
     type: string;
     category: string;
     imageUrl: string;
-    appliedUsers?: User[];
+    appliedUsers: User[];
 }

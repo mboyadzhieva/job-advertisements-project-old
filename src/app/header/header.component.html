@@ -1,16 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Find your next job!</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand">Find your next job!</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="job-ads">Advertisments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Users</a>
-        </li>
-        <li class="nav-item">
+
+        <ng-container *ngIf="isLogged">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="job-ads">Advertisments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Users</a>
+          </li>
+        </ng-container>
+        
+        <li class="nav-item" *ngIf="!isLogged">
           <a class="nav-link" routerLink='/login'>Login</a>
         </li>
+
+        <ng-container *ngIf="isLogged">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['profile', loggedUser.id]">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="onLogout()">Logout</a>
+          </li>
+        </ng-container>
+        
       </ul>
     </div>
   </nav>

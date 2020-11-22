@@ -1,8 +1,11 @@
-<h1 class="text-center text-primary">Job offers</h1>
+<h1 class="text-center text-primary mt-4">Job offers</h1>
 
 <div class="mb-2">
     <a routerLink="/job-ads/create">Create new job offer</a>
 </div>
 
 <app-card-list-view [advertisements]="advertisements"
-                    (adDeleted)="onAdDelete($event)"></app-card-list-view>
+                    (adDeleted)="onAdDelete($event)"
+                    (adLiked)="onAdLike($event)"
+                    (adDisliked)="onAdDislike($event)"
+                    (adSelectedToApplyFor)="onAdApply($event)"></app-card-list-view>
