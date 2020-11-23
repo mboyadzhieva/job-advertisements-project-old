@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.loggedUser.name = this.formGroup.value.name;
     this.loggedUser.password = this.formGroup.value.password;
 
-    this.authService.udpateUser(this.loggedUser).pipe(
+    this.authService.updateUser(this.loggedUser).pipe(
       take(1)
     ).subscribe(
       () => {
@@ -51,6 +51,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log(this.loggedUser);
       }
     );
+  }
+
+  onUserDelete(): void{
+    this.loggedUser.isActive = false;
+
+    this.authService.updateUser(this.loggedUser).pipe(
+      take(1)
+    ).subscribe(
+      () => {
+        this.router.navigate(['login']);
+      },
+      (error) => {
+        console.log('delete User response failed: ' + error);
+      });
   }
 
   ngOnDestroy(): void {

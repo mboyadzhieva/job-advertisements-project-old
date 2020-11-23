@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
           return;
         }
 
+        if (response.isActive === false){
+          this.errorMsg = 'Invalid user';
+          return;
+        }
+
         this.authService.setLoggedUser(response);
         this.router.navigate(['/job-ads']);
       }

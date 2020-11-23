@@ -19,6 +19,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NonAuthGuard } from './auth/guards/non-auth.guard';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { UserAdsComponent } from './auth/user-ads/user-ads.component';
 
 const routes: Route[] = [
   {
@@ -52,6 +53,11 @@ const routes: Route[] = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'user/ads',
+    component: UserAdsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: '',
     component: CardListComponent,
     canActivate: [AuthGuard]
@@ -71,7 +77,8 @@ const routes: Route[] = [
     ErrorMessageComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserAdsComponent
   ],
   imports: [
     BrowserModule,

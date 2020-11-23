@@ -8,7 +8,9 @@
       "type": "Full-time",
       "category": "Management",
       "appliedUsers": [],
-      "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg"
+      "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg",
+      "companyName": "TestCompany",
+      "isActive": true
     },
     {
       "id": 2,
@@ -18,7 +20,9 @@
       "type": "Part-time",
       "category": "Data Science",
       "appliedUsers": [],
-      "imageUrl": "https://wallpapercave.com/wp/dG3iPjW.jpg"
+      "imageUrl": "https://wallpapercave.com/wp/dG3iPjW.jpg",
+      "companyName": "TestCompany",
+      "isActive": true
     },
     {
       "id": 3,
@@ -28,15 +32,67 @@
       "type": "Remote",
       "category": "Risk Analyst",
       "appliedUsers": [],
-      "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg"
+      "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg",
+      "companyName": "TestCompany",
+      "isActive": true
     },
     {
       "id": 4,
       "title": "New Job Offer",
       "description": "New job description",
+      "type": "Part-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "likes": 0,
+      "appliedUsers": [],
+      "companyName": "TestCompany",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "title": "New Job Offer by TestCompany",
+      "description": "New job description",
+      "type": "Full-time",
+      "category": ".......................",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "TestCompany",
+      "likes": 0,
+      "appliedUsers": [],
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "title": "New Job Offer by Microsoft",
+      "description": "testiiiing",
+      "type": "Full-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "Microsoft",
+      "likes": 0,
+      "appliedUsers": [],
+      "isActive": true
+    },
+    {
+      "id": 7,
+      "title": "CEO at Microsoft",
+      "description": "New job description",
       "type": "Remote",
       "category": "New category",
       "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "Microsoft",
+      "isActive": true,
+      "likes": 0,
+      "appliedUsers": []
+    },
+    {
+      "id": 8,
+      "title": "Junior dev",
+      "description": "New job description",
+      "type": "Part-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "Microsoft",
+      "isActive": true,
       "likes": 0,
       "appliedUsers": []
     }
@@ -44,10 +100,11 @@
   "users": [
     {
       "id": 1,
-      "name": "Administrator123",
+      "name": "Administrator",
       "email": "admin@admin.gmail",
       "password": "admin12345",
       "role": "admin",
+      "isActive": true,
       "appliedFor": [
         {
           "id": 4,
@@ -68,7 +125,41 @@
       "password": "123456",
       "rePassword": "123456",
       "role": "Person",
-      "appliedFor": [],
+      "isActive": true,
+      "appliedFor": [
+        {
+          "id": 4,
+          "title": "New Job Offer",
+          "description": "New job description",
+          "type": "Part-time",
+          "category": "New category",
+          "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+          "likes": 0,
+          "appliedUsers": []
+        },
+        {
+          "id": 1,
+          "title": "Project Manager",
+          "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
+          "likes": 1,
+          "type": "Full-time",
+          "category": "Management",
+          "appliedUsers": [],
+          "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg",
+          "companyName": "TestCompany"
+        },
+        {
+          "id": 3,
+          "title": "Risk Specialist with German",
+          "description": "To ensure the expansion of our service delivery center in Sofia we are looking for business to business support specialists, who will help the customers of one of the biggest online payment platforms in the world, offering a fully integrated suite of payment products.",
+          "likes": 0,
+          "type": "Remote",
+          "category": "Risk Analyst",
+          "appliedUsers": [],
+          "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg",
+          "companyName": "TestCompany"
+        }
+      ],
       "acceptedFor": [],
       "id": 2
     },
@@ -78,9 +169,32 @@
       "password": "678910",
       "rePassword": "678910",
       "role": "Company",
+      "isActive": true,
       "appliedFor": [],
       "acceptedFor": [],
       "id": 3
+    },
+    {
+      "name": "UserToBeDeleted",
+      "email": "deleteThisUser@testing.com",
+      "password": "qwerty",
+      "rePassword": "qwerty",
+      "role": "Person",
+      "appliedFor": [],
+      "acceptedFor": [],
+      "isActive": false,
+      "id": 4
+    },
+    {
+      "name": "Microsoft",
+      "email": "microsoft@testing.com",
+      "password": "microsoft",
+      "rePassword": "microsoft",
+      "role": "Company",
+      "appliedFor": [],
+      "acceptedFor": [],
+      "isActive": true,
+      "id": 5
     }
   ]
 }

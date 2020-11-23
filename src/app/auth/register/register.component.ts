@@ -39,19 +39,20 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.getUsers().pipe(
-      map((stream: User[]) => stream.find(user => user.email === formValue.email)),
+      map((stream: User[]) => stream.find(user => user.email === formValue.email || user.name === formValue.name)),
       take(1)
     ).subscribe(
       (response) => {
         if (response){
-          this.errorMsg = 'User with this email already exists!';
+          this.errorMsg = 'User with this email/name already exists!';
           return;
         }
 
         this.authService.register({
           ...formValue,
           appliedFor: [],
-          acceptedFor: []
+          acceptedFor: [],
+          isActive: true
         }).pipe(
           take(1)
         ).subscribe(

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { Advertisement } from '../advertisement.interface';
@@ -13,14 +14,19 @@ import { AuthService } from '../auth/auth.service';
 export class CardListComponent implements OnInit, OnDestroy {
 
   advertisements: Advertisement[];
+  isAuthorized: boolean;
 
   destroy$ = new Subject<boolean>();
 
-  constructor(private adService: AdService, private authService: AuthService) {
+  constructor(private adService: AdService, private authService: AuthService, private router: Router) {
    }
 
   ngOnInit(): void {
     this.getContent();
+
+    if (this.authService.getLoggedUser().role === 'Company'){
+      this.isAuthorized = true;
+    }
   }
 
   ngOnDestroy(): void {
@@ -36,7 +42,7 @@ export class CardListComponent implements OnInit, OnDestroy {
         this.getContent();
       },
       (error) => {
-        console.log(error);
+        console.log('delete response failed: ' + error);
       });
   }
 
@@ -68,26 +74,25 @@ export class CardListComponent implements OnInit, OnDestroy {
 
   onAdApply(ad: Advertisement): void{
     const user = this.authService.getLoggedUser();
-    console.log('logged user applying for jobs ' + user);
 
     if (user) {
       user.appliedFor.push(ad);
 
-      this.authService.udpateUser(user).pipe(
+      this.authService.updateUser(user).pipe(
         take(1)
       ).subscribe(
-        () => console.log('User applied for a job'),
+        () => this.router.navigate(['user/ads']),
         (error) => console.log(error)
       );
 
-      ad.appliedUsers.push(user);
+      // ad.appliedUsers.push(user);
 
-      this.adService.udpateAd(ad).pipe(
-        take(1)
-      ).subscribe(
-        () => console.log('The job was applied for by user'),
-        (error) => console.log(error)
-      );
+      // this.adService.updateAd(ad).pipe(
+      //   take(1)
+      // ).subscribe(
+      //   () => console.log('The job was applied for by user'),
+      //   (error) => console.log(error)
+      // );
     }
 
     return;

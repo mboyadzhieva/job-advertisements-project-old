@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Advertisement } from './advertisement.interface';
@@ -9,6 +9,10 @@ import { Advertisement } from './advertisement.interface';
 export class AdService {
 
     url = 'http://localhost:3000/advertisements';
+
+    // httpOptions = {
+    //     headers: new HttpHeaders({'Access-Control-Allow-Origin' : '*'})
+    // };
 
     constructor(private http: HttpClient){
     }

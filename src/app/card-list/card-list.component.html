@@ -1,8 +1,11 @@
 <h1 class="text-center text-primary mt-4">Job offers</h1>
 
-<div class="mb-2">
-    <a routerLink="/job-ads/create">Create new job offer</a>
-</div>
+<ng-container *ngIf="isAuthorized">
+    <div class="mb-2">
+        <a routerLink="/job-ads/create">Create new job offer</a>
+    </div>
+</ng-container>
+
 
 <app-card-list-view [advertisements]="advertisements"
                     (adDeleted)="onAdDelete($event)"

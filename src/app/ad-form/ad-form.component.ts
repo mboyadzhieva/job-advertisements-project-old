@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { Advertisement } from '../advertisement.interface';
 import { AdService } from '../advertisement.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-ad-form',
@@ -17,11 +18,13 @@ export class AdFormComponent implements OnInit, OnDestroy {
 
   ad: Advertisement;
   formGroup: FormGroup;
+  companyName: string;
 
   destroy$ = new Subject<boolean>();
 
   constructor(private fb: FormBuilder,
               private adService: AdService,
+              private authService: AuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
     this.ad = {
@@ -31,7 +34,9 @@ export class AdFormComponent implements OnInit, OnDestroy {
       category: '',
       imageUrl: '',
       likes: 0,
-      appliedUsers: []
+      appliedUsers: [],
+      isActive: true,
+      companyName: ''
     };
    }
 
@@ -47,11 +52,14 @@ export class AdFormComponent implements OnInit, OnDestroy {
       }
     );
 
+    console.log('did not get the intended params');
     this.buildForm();
+
+    this.companyName = this.authService.getLoggedUser().name;
   }
 
   ngOnDestroy(): void{
-    this.destroy$.next(true); // ????
+    this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
@@ -63,24 +71,23 @@ export class AdFormComponent implements OnInit, OnDestroy {
     this.ad.imageUrl = this.formGroup.value.imageUrl;
 
     const ad: Advertisement = {
-      ...this.formGroup.value
+      ...this.formGroup.value,
+      companyName: this.companyName,
+      isActive: true,
+      likes: 0,
+      appliedUsers: []
     };
 
     if (!ad.id){
-      this.adService.createAd(
-        {
-          ...ad,
-          likes: 0,
-          appliedUsers: []
-        }).pipe(
+      this.adService.createAd({...ad}).pipe(
         take(1)
       ).subscribe(
         () => {
           this.router.navigate(['/job-ads']);
-          console.log(ad);
+          console.log('created ad: ' + ad);
         },
         (error) => {
-          console.log(error);
+          console.log('error while creating an ad: ' + error);
       });
 
       return;
@@ -91,15 +98,16 @@ export class AdFormComponent implements OnInit, OnDestroy {
     ).subscribe(
       () => {
         this.router.navigate(['job-ads']);
+        console.log('the updated ad is: ' + this.ad);
       },
       (error) => {
-        console.log(error);
+        console.log('ad update failed: ' + error);
       }
     );
   }
 
   private getAd(id: number): void{
-    this.adService.getAdById(id).pipe(
+      this.adService.getAdById(id).pipe(
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {
@@ -115,6 +123,7 @@ export class AdFormComponent implements OnInit, OnDestroy {
     private buildForm(): void{
 
       this.formGroup = this.fb.group({
+        id: this.ad.id,
         title: [this.ad.title, [Validators.required, Validators.minLength(10)]],
         description: [this.ad.description, [Validators.required, Validators.minLength(10)]],
         type: [this.ad.type, [Validators.required]],

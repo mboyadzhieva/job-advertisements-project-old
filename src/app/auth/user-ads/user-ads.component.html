@@ -1,0 +1,44 @@
+<ng-container *ngIf="userRole === 'Person'">
+
+    <h3 class="text-primary">Job postions you applied for:</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let adUserAppliedFor of adsUserAppliedFor">
+            <td>{{adUserAppliedFor.title}}</td>
+            <td>{{adUserAppliedFor.description}}</td>
+            <td>{{adUserAppliedFor.type}}</td>
+            <td>{{adUserAppliedFor.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-primary mt-4">Job postions you were approved for:</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let adUserWasApprovedFor of adsUserWasApprovedFor">
+            <td>{{adUserWasApprovedFor.title}}</td>
+            <td>{{adUserWasApprovedFor.description}}</td>
+            <td>{{adUserWasApprovedFor.type}}</td>
+            <td>{{adUserWasApprovedFor.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+</ng-container>
+

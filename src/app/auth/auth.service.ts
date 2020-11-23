@@ -34,10 +34,16 @@ export class AuthService {
         );
     }
 
-    udpateUser(user: User): Observable<any>{
+    updateUser(user: User): Observable<any>{
         const url = `${this.url}/${user.id}`;
 
         return this.http.put(url, user);
+    }
+
+    deleteUser(id: number): Observable<any>{
+        const url = `${this.url}/${id}`;
+
+        return this.http.delete(url);
     }
 
     logout(): void{

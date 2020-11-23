@@ -7,10 +7,15 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="job-ads">Advertisments</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">Users</a>
-          </li>
         </ng-container>
+
+        <li class="nav-item" *ngIf="userRole === 'Person'">
+          <a class="nav-link" routerLink='/user/ads'>My jobs</a>
+        </li>
+
+        <li class="nav-item" *ngIf="userRole === 'Company'">
+          <a class="nav-link" routerLink='/user/ads'>Job applications</a>
+        </li>
         
         <li class="nav-item" *ngIf="!isLogged">
           <a class="nav-link" routerLink='/login'>Login</a>

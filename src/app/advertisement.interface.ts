@@ -9,4 +9,6 @@ export interface Advertisement {
     category: string;
     imageUrl: string;
     appliedUsers: User[];
+    companyName: string;
+    isActive: boolean;
 }

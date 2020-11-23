@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isLogged: boolean;
   loggedUser: User;
+  userRole: string;
 
   destroy$ = new Subject<boolean>();
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
        if (this.isLogged){
         this.loggedUser = this.authService.getLoggedUser();
+        this.userRole = this.loggedUser.role;
         }
       });
   }
