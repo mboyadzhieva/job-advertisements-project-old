@@ -20,7 +20,6 @@ export class CardItemComponent implements OnInit {
 
   loggedUser: User;
   companyName: string;
-  isActive: boolean;
   clicked = false;
 
   constructor(private authService: AuthService) { }
@@ -30,10 +29,6 @@ export class CardItemComponent implements OnInit {
 
     if (this.loggedUser && this.loggedUser.role === 'Company'){
       this.companyName = this.loggedUser.name;
-    }
-
-    if (this.advertisement.isActive){
-      this.isActive = true;
     }
   }
 

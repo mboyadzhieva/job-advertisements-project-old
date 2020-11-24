@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import {  take, takeUntil } from 'rxjs/operators';
+import {  map, take, takeUntil } from 'rxjs/operators';
+import { Advertisement } from 'src/app/advertisement.interface';
+import { AdService } from 'src/app/advertisement.service';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 
@@ -17,10 +19,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   isLogged: boolean;
   loggedUser: User;
   formGroup: FormGroup;
+  adsToBeSetInactive: Advertisement[];
 
   destroy$ = new Subject<boolean>();
 
   constructor(private authService: AuthService,
+              private adService: AdService,
               private fb: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
@@ -56,15 +60,41 @@ export class ProfileComponent implements OnInit, OnDestroy {
   onUserDelete(): void{
     this.loggedUser.isActive = false;
 
+    if (this.loggedUser.role === 'Company') {
+      this.adService.getAds().pipe(
+        map((stream: Advertisement[]) => {
+          return stream.filter(ads => ads.companyName === this.loggedUser.name);
+          }
+        ),
+        takeUntil(this.destroy$)
+      ).subscribe(
+        (response) => {
+          response.forEach(element => {
+            this.adService.updateAd({
+              ...element,
+              isActive: false
+            }).pipe(
+              take(1)
+            ).subscribe();
+          });
+        },
+        (error) => console.log(error)
+      );
+    }
+
     this.authService.updateUser(this.loggedUser).pipe(
       take(1)
     ).subscribe(
       () => {
+        this.authService.setIsLogged(false);
+        this.authService.logout();
         this.router.navigate(['login']);
       },
       (error) => {
         console.log('delete User response failed: ' + error);
       });
+
+
   }
 
   ngOnDestroy(): void {

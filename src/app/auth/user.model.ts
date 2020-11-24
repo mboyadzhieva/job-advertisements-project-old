@@ -7,6 +7,5 @@ export interface User {
     email: string;
     role: string;
     isActive: boolean;
-    appliedFor?: Advertisement[];
-    acceptedFor?: Advertisement[];
+    likedAds: Advertisement[];
 }

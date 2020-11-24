@@ -52,7 +52,6 @@ export class AdFormComponent implements OnInit, OnDestroy {
       }
     );
 
-    console.log('did not get the intended params');
     this.buildForm();
 
     this.companyName = this.authService.getLoggedUser().name;
@@ -84,24 +83,24 @@ export class AdFormComponent implements OnInit, OnDestroy {
       ).subscribe(
         () => {
           this.router.navigate(['/job-ads']);
-          console.log('created ad: ' + ad);
+          console.log(ad);
         },
         (error) => {
-          console.log('error while creating an ad: ' + error);
+          console.log(error);
       });
 
       return;
     }
 
-    this.adService.udpateAd(this.ad).pipe(
+    this.adService.updateAd(this.ad).pipe(
       takeUntil(this.destroy$)
     ).subscribe(
       () => {
         this.router.navigate(['job-ads']);
-        console.log('the updated ad is: ' + this.ad);
+        console.log(this.ad);
       },
       (error) => {
-        console.log('ad update failed: ' + error);
+        console.log(error);
       }
     );
   }
@@ -111,7 +110,7 @@ export class AdFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {
-        console.log('response' + response);
+        console.log(response);
         this.ad = response;
         this.buildForm();
       },

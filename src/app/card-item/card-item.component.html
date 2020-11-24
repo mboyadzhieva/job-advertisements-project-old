@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<ng-container *ngIf="isActive">
-
 <div class="card mb-4" style="width: 18rem;">
     <img class="card-img-top" src={{advertisement.imageUrl}} height="180" alt="Job offer image">
     <div class="card-body">
@@ -43,9 +41,7 @@
           Edit
         </a>
       
-        <button type="button" class="btn btn-primary" (click)="adSelectedForDelete.emit(advertisement.id)">Del</button>
+        <button type="button" class="btn btn-primary" (click)="adSelectedForDelete.emit(advertisement.id)">Delete</button>
         </ng-container>        
     </div>
 </div>
-
-</ng-container>

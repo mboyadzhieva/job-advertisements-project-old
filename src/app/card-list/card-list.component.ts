@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { map, take, takeUntil } from 'rxjs/operators';
 import { Advertisement } from '../advertisement.interface';
 import { AdService } from '../advertisement.service';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
 
 @Component({
   selector: 'app-card-list',
@@ -15,6 +16,9 @@ export class CardListComponent implements OnInit, OnDestroy {
 
   advertisements: Advertisement[];
   isAuthorized: boolean;
+  loggedUser: User;
+  userAds: Advertisement[];
+  hasApplied: boolean;
 
   destroy$ = new Subject<boolean>();
 
@@ -24,8 +28,13 @@ export class CardListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getContent();
 
-    if (this.authService.getLoggedUser().role === 'Company'){
+    this.loggedUser = this.authService.getLoggedUser();
+
+    if (this.loggedUser.role === 'Company'){
       this.isAuthorized = true;
+    }
+    else{
+      this.isAuthorized = false;
     }
   }
 
@@ -35,24 +44,32 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
 
   onAdDelete(adId: number): void {
-    this.adService.deleteAd(adId).pipe(
-      takeUntil(this.destroy$)
+
+    this.adService.getAdById(adId).pipe(
+      take(1)
     ).subscribe(
-      () => {
-        this.getContent();
+      (response) => {
+        this.adService.updateAd({
+          ...response,
+          isActive: false
+        }).pipe(
+          take(1)
+        ).subscribe(
+          () => this.getContent()
+        );
       },
-      (error) => {
-        console.log('delete response failed: ' + error);
-      });
+      (error) => console.log('delete response failed: ' + error)
+    );
   }
 
   onAdLike(ad: Advertisement): void{
     ad.likes++;
-    this.adService.udpateAd(ad).pipe(
-      takeUntil(this.destroy$)
+    this.adService.updateAd(ad).pipe(
+      take(1)
     ).subscribe(
       () => {
-        this.getContent();
+        console.log('ad liked');
+        //this.getContent();
       },
       (error) => {
         console.log(error);
@@ -61,11 +78,12 @@ export class CardListComponent implements OnInit, OnDestroy {
 
   onAdDislike(ad: Advertisement): void{
     ad.likes--;
-    this.adService.udpateAd(ad).pipe(
-      takeUntil(this.destroy$)
+    this.adService.updateAd(ad).pipe(
+      take(1)
     ).subscribe(
       () => {
-        this.getContent();
+        console.log('ad disliked');
+        //this.getContent();
       },
       (error) => {
         console.log(error);
@@ -73,33 +91,49 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
 
   onAdApply(ad: Advertisement): void{
-    const user = this.authService.getLoggedUser();
+    const appLiedUsers = ad.appliedUsers;
+    appLiedUsers.push(this.loggedUser);
 
-    if (user) {
-      user.appliedFor.push(ad);
+    // TODO: check if user has applied for that job already
 
-      this.authService.updateUser(user).pipe(
-        take(1)
+    this.adService.getAds().pipe(
+      map((stream) => stream.filter(ads => ads.appliedUsers.length > 0)),
+      takeUntil(this.destroy$)
+    ).subscribe(
+      (response) => {
+        response.forEach(element => {
+          if (element.appliedUsers.includes(this.loggedUser)){
+            this.hasApplied = true;
+          }
+          this.hasApplied = false;
+        });
+        debugger;
+        console.log('response of the very hardcore map');
+      },
+      (error) => console.log(error)
+    );
+
+    if (!this.hasApplied){
+      this.adService.updateAd(
+      {
+        ...ad,
+        appliedUsers: appLiedUsers
+      }).pipe(
+            take(1)
       ).subscribe(
-        () => this.router.navigate(['user/ads']),
+        () => {
+          this.router.navigate(['user/ads']);
+        },
         (error) => console.log(error)
       );
-
-      // ad.appliedUsers.push(user);
-
-      // this.adService.updateAd(ad).pipe(
-      //   take(1)
-      // ).subscribe(
-      //   () => console.log('The job was applied for by user'),
-      //   (error) => console.log(error)
-      // );
     }
-
-    return;
   }
 
   private getContent(): void{
     this.adService.getAds().pipe(
+      map((stream) => {
+        return stream.filter(ad => ad.isActive === true);
+      }),
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {

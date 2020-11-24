@@ -31,7 +31,7 @@ export class AdService {
         return this.http.post(this.url, ad);
     }
 
-    udpateAd(ad: Advertisement): Observable<any>{
+    updateAd(ad: Advertisement): Observable<any>{
         const url = `${this.url}/${ad.id}`;
 
         return this.http.put(url, ad);

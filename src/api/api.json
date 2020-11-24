@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Project Manager",
       "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
-      "likes": 1,
+      "likes": 4,
       "type": "Full-time",
       "category": "Management",
       "appliedUsers": [],
@@ -28,23 +28,11 @@
       "id": 3,
       "title": "Risk Specialist with German",
       "description": "To ensure the expansion of our service delivery center in Sofia we are looking for business to business support specialists, who will help the customers of one of the biggest online payment platforms in the world, offering a fully integrated suite of payment products.",
-      "likes": 0,
+      "likes": 1,
       "type": "Remote",
       "category": "Risk Analyst",
       "appliedUsers": [],
       "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg",
-      "companyName": "TestCompany",
-      "isActive": true
-    },
-    {
-      "id": 4,
-      "title": "New Job Offer",
-      "description": "New job description",
-      "type": "Part-time",
-      "category": "New category",
-      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
-      "likes": 0,
-      "appliedUsers": [],
       "companyName": "TestCompany",
       "isActive": true
     },
@@ -58,11 +46,11 @@
       "companyName": "TestCompany",
       "likes": 0,
       "appliedUsers": [],
-      "isActive": true
+      "isActive": false
     },
     {
       "id": 6,
-      "title": "New Job Offer by Microsoft",
+      "title": "New Job Offer by Microsoft changed at 2 am",
       "description": "testiiiing",
       "type": "Full-time",
       "category": "New category",
@@ -81,8 +69,29 @@
       "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
       "companyName": "Microsoft",
       "isActive": true,
-      "likes": 0,
-      "appliedUsers": []
+      "likes": 1,
+      "appliedUsers": [
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "likedAds": [],
+          "id": 2
+        },
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "likedAds": [],
+          "id": 2
+        }
+      ]
     },
     {
       "id": 8,
@@ -95,6 +104,77 @@
       "isActive": true,
       "likes": 0,
       "appliedUsers": []
+    },
+    {
+      "id": 9,
+      "title": "Full stack developer",
+      "description": "New job description",
+      "type": "Remote",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "TestCompany",
+      "isActive": true,
+      "likes": 0,
+      "appliedUsers": []
+    },
+    {
+      "id": 10,
+      "title": "test123456",
+      "description": "................",
+      "type": "Full-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "Company to be deleted",
+      "isActive": false,
+      "likes": 0,
+      "appliedUsers": []
+    },
+    {
+      "id": 11,
+      "title": "123456test",
+      "description": "New job description",
+      "type": "Remote",
+      "category": ".......................",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "Company to be deleted",
+      "isActive": false,
+      "likes": 0,
+      "appliedUsers": []
+    },
+    {
+      "id": 12,
+      "title": "....................",
+      "description": "................",
+      "type": "Part-time",
+      "category": ".......................",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "TestCompany",
+      "isActive": false,
+      "likes": 0,
+      "appliedUsers": []
+    },
+    {
+      "id": 13,
+      "title": "New Job Offer",
+      "description": "New job description",
+      "type": "Full-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "TestCompany",
+      "isActive": true,
+      "likes": 0,
+      "appliedUsers": [
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "likedAds": [],
+          "id": 2
+        }
+      ]
     }
   ],
   "users": [
@@ -105,19 +185,7 @@
       "password": "admin12345",
       "role": "admin",
       "isActive": true,
-      "appliedFor": [
-        {
-          "id": 4,
-          "title": "New Job Offer",
-          "description": "New job description",
-          "type": "Remote",
-          "category": "New category",
-          "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
-          "likes": 0,
-          "appliedUsers": []
-        }
-      ],
-      "acceptedFor": []
+      "likedAds": []
     },
     {
       "name": "TestUser",
@@ -126,41 +194,7 @@
       "rePassword": "123456",
       "role": "Person",
       "isActive": true,
-      "appliedFor": [
-        {
-          "id": 4,
-          "title": "New Job Offer",
-          "description": "New job description",
-          "type": "Part-time",
-          "category": "New category",
-          "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
-          "likes": 0,
-          "appliedUsers": []
-        },
-        {
-          "id": 1,
-          "title": "Project Manager",
-          "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
-          "likes": 1,
-          "type": "Full-time",
-          "category": "Management",
-          "appliedUsers": [],
-          "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg",
-          "companyName": "TestCompany"
-        },
-        {
-          "id": 3,
-          "title": "Risk Specialist with German",
-          "description": "To ensure the expansion of our service delivery center in Sofia we are looking for business to business support specialists, who will help the customers of one of the biggest online payment platforms in the world, offering a fully integrated suite of payment products.",
-          "likes": 0,
-          "type": "Remote",
-          "category": "Risk Analyst",
-          "appliedUsers": [],
-          "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg",
-          "companyName": "TestCompany"
-        }
-      ],
-      "acceptedFor": [],
+      "likedAds": [],
       "id": 2
     },
     {
@@ -170,8 +204,7 @@
       "rePassword": "678910",
       "role": "Company",
       "isActive": true,
-      "appliedFor": [],
-      "acceptedFor": [],
+      "likedAds": [],
       "id": 3
     },
     {
@@ -180,8 +213,7 @@
       "password": "qwerty",
       "rePassword": "qwerty",
       "role": "Person",
-      "appliedFor": [],
-      "acceptedFor": [],
+      "likedAds": [],
       "isActive": false,
       "id": 4
     },
@@ -191,10 +223,19 @@
       "password": "microsoft",
       "rePassword": "microsoft",
       "role": "Company",
-      "appliedFor": [],
-      "acceptedFor": [],
+      "likedAds": [],
       "isActive": true,
       "id": 5
+    },
+    {
+      "name": "Company to be deleted",
+      "email": "company@comp.com",
+      "password": "company",
+      "rePassword": "company",
+      "role": "Company",
+      "likedAds": [],
+      "isActive": false,
+      "id": 6
     }
   ]
 }
