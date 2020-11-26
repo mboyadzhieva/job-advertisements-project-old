@@ -9,6 +9,8 @@ export interface Advertisement {
     category: string;
     imageUrl: string;
     appliedUsers: User[];
+    approvedUser: User;
     companyName: string;
     isActive: boolean;
+    likedBy: User[];
 }

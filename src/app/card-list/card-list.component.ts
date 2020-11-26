@@ -63,30 +63,25 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
 
   onAdLike(ad: Advertisement): void{
-    ad.likes++;
-    this.adService.updateAd(ad).pipe(
-      take(1)
-    ).subscribe(
-      () => {
-        console.log('ad liked');
-        //this.getContent();
-      },
-      (error) => {
-        console.log(error);
-      });
-  }
 
-  onAdDislike(ad: Advertisement): void{
-    ad.likes--;
-    this.adService.updateAd(ad).pipe(
+    this.adService.getAdById(ad.id).pipe(
       take(1)
     ).subscribe(
-      () => {
-        console.log('ad disliked');
-        //this.getContent();
-      },
-      (error) => {
-        console.log(error);
+      (response) => {
+        const hasBeenLiked = response.likedBy.some(u => u.id === this.loggedUser.id);
+        if (!hasBeenLiked){
+          ad.likes++;
+          ad.likedBy.push(this.loggedUser);
+          this.adService.updateAd(ad).pipe(
+          take(1)
+        ).subscribe(
+          () => {
+            console.log('ad liked');
+          },
+          (error) => {
+            console.log(error);
+          });
+        }
       });
   }
 
@@ -96,22 +91,26 @@ export class CardListComponent implements OnInit, OnDestroy {
 
     // TODO: check if user has applied for that job already
 
-    this.adService.getAds().pipe(
-      map((stream) => stream.filter(ads => ads.appliedUsers.length > 0)),
-      takeUntil(this.destroy$)
+    this.adService.getAdById(ad.id).pipe(
+      take(1)
     ).subscribe(
       (response) => {
-        response.forEach(element => {
-          if (element.appliedUsers.includes(this.loggedUser)){
+          if (response.appliedUsers.includes(this.loggedUser)){
             this.hasApplied = true;
+          }else{
+            this.hasApplied = false;
           }
-          this.hasApplied = false;
-        });
-        debugger;
-        console.log('response of the very hardcore map');
+          console.log(this.hasApplied);
       },
       (error) => console.log(error)
     );
+
+    // if (ad.appliedUsers.includes(this.loggedUser)){
+    //   debugger;
+    //   this.hasApplied = true;
+    // }else{
+    //   this.hasApplied = false;
+    // }
 
     if (!this.hasApplied){
       this.adService.updateAd(
@@ -119,7 +118,7 @@ export class CardListComponent implements OnInit, OnDestroy {
         ...ad,
         appliedUsers: appLiedUsers
       }).pipe(
-            take(1)
+        take(1)
       ).subscribe(
         () => {
           this.router.navigate(['user/ads']);

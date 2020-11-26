@@ -4,29 +4,31 @@
     <img class="card-img-top" src={{advertisement.imageUrl}} height="180" alt="Job offer image">
     <div class="card-body">
       <h5 class="card-title">{{advertisement.title}}</h5>
-      <p class="card-text">Description: {{advertisement.description}}</p>
+      <p class="card-text">
+        <span class="font-weight-bold">Description: </span>{{advertisement.description}}
+        </p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Type: {{advertisement.type}}</li>
-      <li class="list-group-item">Category: {{advertisement.category}}</li>
-      <li class="list-group-item">Likes: {{advertisement.likes}}</li>
-      <li class="list-group-item">Offered by: {{advertisement.companyName}}</li>
+      <li class="list-group-item">
+        <span class="font-weight-bold">Type: </span>{{advertisement.type}}
+      </li>
+      <li class="list-group-item">
+        <span class="font-weight-bold">Category: </span>{{advertisement.category}}
+      </li>
+      <li class="list-group-item">
+        <span class="font-weight-bold">Likes: </span>{{advertisement.likes}}
+      </li>
+      <li class="list-group-item">
+        <span class="font-weight-bold">Offered by: </span>{{advertisement.companyName}}
+      </li>
     </ul>
     <div class="card-body">
       <ng-container *ngIf="!companyName">
-        <button *ngIf="!clicked else dislike"
-                type="button"
+        <button type="button"
                 class="btn btn-primary mr-1"
-                (click)="onLikeClick(); clicked = true;">
+                (click)="onLikeClick();">
                 <i class="fa fa-thumbs-up"></i>             
-              </button>
-        <ng-template #dislike>
-            <button type="button"
-                    class="btn btn-primary mr-1"
-                    (click)="onDislikeClick(); clicked = false;">
-            <i class="fa">&#xf165;</i>                
-          </button>  
-        </ng-template>       
+              </button>      
         
         <button type="button" 
                 class="btn btn-primary mr-1"

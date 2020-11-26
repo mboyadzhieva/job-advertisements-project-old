@@ -36,7 +36,9 @@ export class AdFormComponent implements OnInit, OnDestroy {
       likes: 0,
       appliedUsers: [],
       isActive: true,
-      companyName: ''
+      companyName: '',
+      approvedUser: null,
+      likedBy: []
     };
    }
 
@@ -74,7 +76,9 @@ export class AdFormComponent implements OnInit, OnDestroy {
       companyName: this.companyName,
       isActive: true,
       likes: 0,
-      appliedUsers: []
+      appliedUsers: [],
+      approvedUser: null,
+      likedBy: []
     };
 
     if (!ad.id){
@@ -83,7 +87,6 @@ export class AdFormComponent implements OnInit, OnDestroy {
       ).subscribe(
         () => {
           this.router.navigate(['/job-ads']);
-          console.log(ad);
         },
         (error) => {
           console.log(error);
@@ -97,7 +100,6 @@ export class AdFormComponent implements OnInit, OnDestroy {
     ).subscribe(
       () => {
         this.router.navigate(['job-ads']);
-        console.log(this.ad);
       },
       (error) => {
         console.log(error);
@@ -110,7 +112,6 @@ export class AdFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {
-        console.log(response);
         this.ad = response;
         this.buildForm();
       },
@@ -123,11 +124,11 @@ export class AdFormComponent implements OnInit, OnDestroy {
 
       this.formGroup = this.fb.group({
         id: this.ad.id,
-        title: [this.ad.title, [Validators.required, Validators.minLength(10)]],
+        title: [this.ad.title, [Validators.required]],
         description: [this.ad.description, [Validators.required, Validators.minLength(10)]],
         type: [this.ad.type, [Validators.required]],
-        category: [this.ad.category, [Validators.required, Validators.minLength(10)]],
-        imageUrl: [this.ad.imageUrl, Validators.required]
+        category: [this.ad.category, [Validators.required]],
+        imageUrl: [this.ad.imageUrl]
       });
     }
 }

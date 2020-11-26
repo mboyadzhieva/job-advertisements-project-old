@@ -2,7 +2,6 @@
     <div class="col-md-4" *ngFor="let advertisement of advertisements">
         <app-card-item [advertisement]="advertisement" 
                        (adLiked)="onAdLiked($event)"
-                       (adDisliked)="onAdDisliked($event)"
                        (adSelectedForDelete)="adDeleted.emit($event)"
                        (adSelectedToApplyFor)="onAdSelectedForApplication($event)">
         </app-card-item>        

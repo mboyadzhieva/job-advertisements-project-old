@@ -10,10 +10,6 @@ export class AdService {
 
     url = 'http://localhost:3000/advertisements';
 
-    // httpOptions = {
-    //     headers: new HttpHeaders({'Access-Control-Allow-Origin' : '*'})
-    // };
-
     constructor(private http: HttpClient){
     }
 

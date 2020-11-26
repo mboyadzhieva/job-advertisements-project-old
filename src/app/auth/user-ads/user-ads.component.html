@@ -1,6 +1,6 @@
 <ng-container *ngIf="userRole === 'Person'">
 
-    <h3 class="text-primary">Job postions you applied for:</h3>
+    <h3 class="p-3 mb-2 bg-warning text-dark">Job postions you applied for:</h3>
     <table class="table">
         <thead>
           <tr>
@@ -20,7 +20,7 @@
         </tbody>
       </table>
 
-      <h3 class="text-primary mt-4">Job postions you were approved for:</h3>
+      <h3 class="p-3 mb-2 bg-success text-white">Job postions you were approved for:</h3>
       <table class="table">
         <thead>
           <tr>
@@ -41,4 +41,57 @@
       </table>
 
 </ng-container>
+
+<ng-container *ngIf="userRole === 'Company'">
+
+  <ng-container *ngFor="let ad of companyAds">
+    <h4 class="p-3 mb-2 bg-info text-white">{{ad.title}}</h4>
+    
+    <table class="table mb-5">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Approve/Reject</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of ad.appliedUsers">            
+            <td>{{user.name}}</td>      
+            <td>{{user.email}}</td>
+            <td>
+              <button type="button"
+                      class="btn btn-link"
+                      (click)="onApprove(ad, user)">            
+              Approve        
+              </button>
+
+              <button type="button"
+                      class="btn btn-link"
+                      (click)="onReject(ad, user)">            
+              Reject        
+              </button>
+            </td>
+          </tr>         
+          <ng-container *ngIf="ad.approvedUser">
+            <strong class="text-success"> Approved for the job:  </strong>
+            <ng-container class="font-italic">
+              {{ad.approvedUser.name}}
+            </ng-container>
+            
+          </ng-container>
+
+        </tbody>
+        
+        
+      </table>  
+      <!-- <ng-container *ngIf="ad.approvedUser">
+        {{ad.approvedUser.name}}
+      </ng-container> -->      
+  </ng-container>
+  
+
+</ng-container>
+
 

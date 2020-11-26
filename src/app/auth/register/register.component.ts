@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
 
         this.authService.register({
           ...formValue,
-          likedAds: [],
           isActive: true
         }).pipe(
           take(1)

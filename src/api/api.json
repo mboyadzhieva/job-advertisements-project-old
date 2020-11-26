@@ -4,40 +4,46 @@
       "id": 1,
       "title": "Project Manager",
       "description": "We are looking for an experienced Project Manager who is interested in working on various project in different domains. He/She will be part of our Project Management Office which is responsible for the Transition and Transformation of new projects.",
-      "likes": 4,
+      "likes": 0,
       "type": "Full-time",
       "category": "Management",
       "appliedUsers": [],
       "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg",
       "companyName": "TestCompany",
-      "isActive": true
+      "isActive": true,
+      "approvedUser": null,
+      "likedBy": []
     },
     {
       "id": 2,
       "title": "Data Analyst",
       "description": "In this role you will be responsible for building and maintaining KPI dashboards, creating operational reports, using data based approaches to identify areas of opportunity, and holding the vendor team accountable to KPIs. ",
-      "likes": 1,
+      "likes": 0,
       "type": "Part-time",
       "category": "Data Science",
       "appliedUsers": [],
       "imageUrl": "https://wallpapercave.com/wp/dG3iPjW.jpg",
       "companyName": "TestCompany",
-      "isActive": true
+      "isActive": true,
+      "approvedUser": null,
+      "likedBy": []
     },
     {
       "id": 3,
       "title": "Risk Specialist with German",
       "description": "To ensure the expansion of our service delivery center in Sofia we are looking for business to business support specialists, who will help the customers of one of the biggest online payment platforms in the world, offering a fully integrated suite of payment products.",
-      "likes": 1,
+      "likes": 0,
       "type": "Remote",
       "category": "Risk Analyst",
       "appliedUsers": [],
       "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/home-office-decor-ideas-1582573361.jpg",
       "companyName": "TestCompany",
-      "isActive": true
+      "isActive": true,
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "New Job Offer by TestCompany",
       "description": "New job description",
       "type": "Full-time",
@@ -46,10 +52,12 @@
       "companyName": "TestCompany",
       "likes": 0,
       "appliedUsers": [],
-      "isActive": false
+      "isActive": false,
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "New Job Offer by Microsoft changed at 2 am",
       "description": "testiiiing",
       "type": "Full-time",
@@ -58,28 +66,29 @@
       "companyName": "Microsoft",
       "likes": 0,
       "appliedUsers": [],
-      "isActive": true
+      "isActive": false,
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 7,
-      "title": "CEO at Microsoft",
-      "description": "New job description",
-      "type": "Remote",
-      "category": "New category",
-      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "id": 6,
+      "title": " IT Project Manager",
+      "description": "Lead and manage IT project and program initiatives in support of IT’s global objectives",
+      "type": "Full-time",
+      "category": "Development",
+      "imageUrl": "https://www.ssim.ac.in/blog/wp-content/uploads/2019/12/What-is-management.jpg",
       "companyName": "Microsoft",
       "isActive": true,
-      "likes": 1,
-      "appliedUsers": [
+      "likes": 2,
+      "likedBy": [
         {
-          "name": "TestUser",
-          "email": "testUser@testing.com",
-          "password": "123456",
-          "rePassword": "123456",
+          "name": "NewUser",
+          "email": "newUser@testing.com",
+          "password": "newUser",
+          "rePassword": "newUser",
           "role": "Person",
           "isActive": true,
-          "likedAds": [],
-          "id": 2
+          "id": 7
         },
         {
           "name": "TestUser",
@@ -88,13 +97,14 @@
           "rePassword": "123456",
           "role": "Person",
           "isActive": true,
-          "likedAds": [],
           "id": 2
         }
-      ]
+      ],
+      "approvedUser": null,
+      "appliedUsers": []
     },
     {
-      "id": 8,
+      "id": 7,
       "title": "Junior dev",
       "description": "New job description",
       "type": "Part-time",
@@ -103,22 +113,45 @@
       "companyName": "Microsoft",
       "isActive": true,
       "likes": 0,
-      "appliedUsers": []
+      "appliedUsers": [
+        {
+          "name": "NewUser",
+          "email": "newUser@testing.com",
+          "password": "newUser",
+          "rePassword": "newUser",
+          "role": "Person",
+          "isActive": true,
+          "id": 7
+        },
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "id": 2
+        }
+      ],
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 9,
-      "title": "Full stack developer",
-      "description": "New job description",
-      "type": "Remote",
-      "category": "New category",
-      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "id": 8,
+      "title": "Senior Full stack developer",
+      "description": "You will take an active part in all development phases, including research, design, development, testing and deployment using technologies like Node.js, Angular , Docker, Kubernetes and more Ability to meet aggressive timelines and motivate the team to meet the product deadlines. We are looking for a passionate and experienced Full stack developer to join us.",
+      "type": "Full-time",
+      "category": "Development",
+      "imageUrl": "https://wallpaperhunt.net/save/wallpaper?f=12204-coding-wallpaper-1920x1080-158706302097364.jpg",
       "companyName": "TestCompany",
       "isActive": true,
       "likes": 0,
-      "appliedUsers": []
+      "appliedUsers": [],
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 10,
+      "id": 9,
       "title": "test123456",
       "description": "................",
       "type": "Full-time",
@@ -127,10 +160,12 @@
       "companyName": "Company to be deleted",
       "isActive": false,
       "likes": 0,
-      "appliedUsers": []
+      "appliedUsers": [],
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 11,
+      "id": 10,
       "title": "123456test",
       "description": "New job description",
       "type": "Remote",
@@ -139,10 +174,12 @@
       "companyName": "Company to be deleted",
       "isActive": false,
       "likes": 0,
-      "appliedUsers": []
+      "appliedUsers": [],
+      "approvedUser": null,
+      "likedBy": []
     },
     {
-      "id": 12,
+      "id": 11,
       "title": "....................",
       "description": "................",
       "type": "Part-time",
@@ -151,15 +188,31 @@
       "companyName": "TestCompany",
       "isActive": false,
       "likes": 0,
+      "appliedUsers": [],
+      "approvedUser": null,
+      "likedBy": []
+    },
+    {
+      "id": 12,
+      "title": "New Job Offer Updated",
+      "description": "New job description123",
+      "type": "Full-time",
+      "category": "New category",
+      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "companyName": "TestCompany",
+      "isActive": false,
+      "likes": 0,
+      "approvedUser": null,
+      "likedBy": [],
       "appliedUsers": []
     },
     {
       "id": 13,
-      "title": "New Job Offer",
-      "description": "New job description",
-      "type": "Full-time",
-      "category": "New category",
-      "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
+      "title": " Service Delivery Specialist",
+      "description": "Connecting businesses and tech talents in a fast-changing world. This is what describes best the mission of Modis as a global leader in workforce, skilling and consulting solutions for our partners. As part of the Adecco Group, our brand is present in 20 countries delivering services and solutions in the so-called “Smart Industry” areas and employing 30,000 people.",
+      "type": "Part-time",
+      "category": "Service",
+      "imageUrl": "https://www.modis.com/en-au/-/media/AU/og-images/og-image-generic-00.jpg",
       "companyName": "TestCompany",
       "isActive": true,
       "likes": 0,
@@ -171,10 +224,37 @@
           "rePassword": "123456",
           "role": "Person",
           "isActive": true,
-          "likedAds": [],
           "id": 2
+        },
+        {
+          "name": "NewUser",
+          "email": "newUser@testing.com",
+          "password": "newUser",
+          "rePassword": "newUser",
+          "role": "Person",
+          "isActive": true,
+          "id": 7
+        },
+        {
+          "name": "UserToBeDeleted",
+          "email": "deleteThisUser@testing.com",
+          "password": "qwerty",
+          "rePassword": "qwerty",
+          "role": "Person",
+          "isActive": true,
+          "id": 4
         }
-      ]
+      ],
+      "approvedUser": {
+        "name": "UserToBeDeleted",
+        "email": "deleteThisUser@testing.com",
+        "password": "qwerty",
+        "rePassword": "qwerty",
+        "role": "Person",
+        "isActive": true,
+        "id": 4
+      },
+      "likedBy": []
     }
   ],
   "users": [
@@ -183,9 +263,8 @@
       "name": "Administrator",
       "email": "admin@admin.gmail",
       "password": "admin12345",
-      "role": "admin",
-      "isActive": true,
-      "likedAds": []
+      "role": "Person",
+      "isActive": true
     },
     {
       "name": "TestUser",
@@ -194,7 +273,6 @@
       "rePassword": "123456",
       "role": "Person",
       "isActive": true,
-      "likedAds": [],
       "id": 2
     },
     {
@@ -204,7 +282,6 @@
       "rePassword": "678910",
       "role": "Company",
       "isActive": true,
-      "likedAds": [],
       "id": 3
     },
     {
@@ -213,7 +290,6 @@
       "password": "qwerty",
       "rePassword": "qwerty",
       "role": "Person",
-      "likedAds": [],
       "isActive": false,
       "id": 4
     },
@@ -223,7 +299,6 @@
       "password": "microsoft",
       "rePassword": "microsoft",
       "role": "Company",
-      "likedAds": [],
       "isActive": true,
       "id": 5
     },
@@ -233,9 +308,17 @@
       "password": "company",
       "rePassword": "company",
       "role": "Company",
-      "likedAds": [],
       "isActive": false,
       "id": 6
+    },
+    {
+      "name": "NewUser",
+      "email": "newUser@testing.com",
+      "password": "newUser",
+      "rePassword": "newUser",
+      "role": "Person",
+      "isActive": true,
+      "id": 7
     }
   ]
 }

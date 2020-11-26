@@ -13,14 +13,12 @@ export class CardItemComponent implements OnInit {
   @Input() advertisement: Advertisement;
 
   @Output() adLiked = new EventEmitter<Advertisement>();
-  @Output() adDisliked = new EventEmitter<Advertisement>();
   @Output() adSelectedForDelete = new EventEmitter<number>();
 
   @Output() adSelectedToApplyFor = new EventEmitter<Advertisement>();
 
   loggedUser: User;
   companyName: string;
-  clicked = false;
 
   constructor(private authService: AuthService) { }
 
@@ -34,10 +32,6 @@ export class CardItemComponent implements OnInit {
 
   onLikeClick(): void{
     this.adLiked.emit(this.advertisement);
-  }
-
-  onDislikeClick(): void{
-    this.adDisliked.emit(this.advertisement);
   }
 
   onApplyBtnClick(): void{

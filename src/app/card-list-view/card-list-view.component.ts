@@ -13,7 +13,6 @@ export class CardListViewComponent {
 
   @Output() adDeleted = new EventEmitter<number>();
   @Output() adLiked = new EventEmitter<Advertisement>();
-  @Output() adDisliked = new EventEmitter<Advertisement>();
   @Output() adSelectedToApplyFor = new EventEmitter<Advertisement>();
 
   selectedAd: Advertisement;
@@ -23,10 +22,6 @@ export class CardListViewComponent {
 
   onAdLiked(ad: Advertisement): void{
     this.adLiked.emit(ad);
-  }
-
-  onAdDisliked(ad: Advertisement): void{
-    this.adDisliked.emit(ad);
   }
 
   onAdSelectedForApplication(ad: Advertisement): void{

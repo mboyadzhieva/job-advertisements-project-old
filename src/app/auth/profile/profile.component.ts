@@ -86,15 +86,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe(
       () => {
-        this.authService.setIsLogged(false);
         this.authService.logout();
         this.router.navigate(['login']);
       },
       (error) => {
-        console.log('delete User response failed: ' + error);
+        console.log(error);
       });
-
-
   }
 
   ngOnDestroy(): void {
@@ -107,7 +104,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (response) => {
-        console.log('response' + response);
         this.loggedUser = response;
         this.buildForm();
       },
