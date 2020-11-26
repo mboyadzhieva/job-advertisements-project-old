@@ -18,7 +18,6 @@ export class CardListComponent implements OnInit, OnDestroy {
   isAuthorized: boolean;
   loggedUser: User;
   userAds: Advertisement[];
-  hasApplied: boolean;
 
   destroy$ = new Subject<boolean>();
 
@@ -39,7 +38,7 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next(true); // ????
+    this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
@@ -86,46 +85,30 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
 
   onAdApply(ad: Advertisement): void{
-    const appLiedUsers = ad.appliedUsers;
-    appLiedUsers.push(this.loggedUser);
-
-    // TODO: check if user has applied for that job already
 
     this.adService.getAdById(ad.id).pipe(
       take(1)
     ).subscribe(
       (response) => {
-          if (response.appliedUsers.includes(this.loggedUser)){
-            this.hasApplied = true;
-          }else{
-            this.hasApplied = false;
-          }
-          console.log(this.hasApplied);
+        const hasApplied = response.appliedUsers.some(u => u.id === this.loggedUser.id);
+
+        if (!hasApplied){
+          ad.appliedUsers.push(this.loggedUser);
+          this.adService.updateAd(
+          {
+            ...ad
+          }).pipe(
+            take(1)
+          ).subscribe(
+            () => {},
+            (error) => console.log(error)
+          );
+        }
+
+        this.router.navigate(['user/ads']);
       },
       (error) => console.log(error)
     );
-
-    // if (ad.appliedUsers.includes(this.loggedUser)){
-    //   debugger;
-    //   this.hasApplied = true;
-    // }else{
-    //   this.hasApplied = false;
-    // }
-
-    if (!this.hasApplied){
-      this.adService.updateAd(
-      {
-        ...ad,
-        appliedUsers: appLiedUsers
-      }).pipe(
-        take(1)
-      ).subscribe(
-        () => {
-          this.router.navigate(['user/ads']);
-        },
-        (error) => console.log(error)
-      );
-    }
   }
 
   private getContent(): void{

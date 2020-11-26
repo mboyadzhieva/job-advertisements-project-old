@@ -7,7 +7,17 @@
       "likes": 0,
       "type": "Full-time",
       "category": "Management",
-      "appliedUsers": [],
+      "appliedUsers": [
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "id": 2
+        }
+      ],
       "imageUrl": "https://cdn.wallpapersafari.com/38/18/Q7WOzv.jpg",
       "companyName": "TestCompany",
       "isActive": true,
@@ -112,7 +122,7 @@
       "imageUrl": "https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461216-desk-work-748x499.jpg",
       "companyName": "Microsoft",
       "isActive": true,
-      "likes": 0,
+      "likes": 1,
       "appliedUsers": [
         {
           "name": "NewUser",
@@ -133,8 +143,26 @@
           "id": 2
         }
       ],
-      "approvedUser": null,
-      "likedBy": []
+      "approvedUser": {
+        "name": "NewUser",
+        "email": "newUser@testing.com",
+        "password": "newUser",
+        "rePassword": "newUser",
+        "role": "Person",
+        "isActive": true,
+        "id": 7
+      },
+      "likedBy": [
+        {
+          "name": "TestUser",
+          "email": "testUser@testing.com",
+          "password": "123456",
+          "rePassword": "123456",
+          "role": "Person",
+          "isActive": true,
+          "id": 2
+        }
+      ]
     },
     {
       "id": 8,
@@ -245,15 +273,7 @@
           "id": 4
         }
       ],
-      "approvedUser": {
-        "name": "UserToBeDeleted",
-        "email": "deleteThisUser@testing.com",
-        "password": "qwerty",
-        "rePassword": "qwerty",
-        "role": "Person",
-        "isActive": true,
-        "id": 4
-      },
+      "approvedUser": null,
       "likedBy": []
     }
   ],

@@ -54,7 +54,6 @@ export class UserAdsComponent implements OnInit, OnDestroy {
   }
 
   onApprove(ad: Advertisement, user: User): void{
-    // ad.approvedUser = user;
     let isUserActive = false;
     let hasApprovedUser = true;
 
@@ -63,7 +62,6 @@ export class UserAdsComponent implements OnInit, OnDestroy {
     ).subscribe(
       (responseAd) => {
         if (responseAd.approvedUser){
-          // hasApprovedUser = true;
           this.msg = 'This advertisement has an approved user (' + responseAd.approvedUser.name + ')!';
           return;
         }else{
@@ -73,7 +71,6 @@ export class UserAdsComponent implements OnInit, OnDestroy {
           ).subscribe(
             (userResponse) => {
               if (!userResponse.isActive){
-                // isUserActive = false;
                 this.msg = 'This user is no longer active and cannot be approved for the job!';
                 return;
               }else{
@@ -85,7 +82,6 @@ export class UserAdsComponent implements OnInit, OnDestroy {
                   ).subscribe(
                     () => {
                       this.msg = '';
-                      // this.router.navigate(['/user/ads']);
                     },
                     (error) => console.log(error)
                   );
@@ -107,10 +103,7 @@ export class UserAdsComponent implements OnInit, OnDestroy {
     this.adService.updateAd(ad).pipe(
       take(1)
     ).subscribe(
-      () => {
-        // this.msg = 'User: ' + user.name  + ' has been removed from the job!';
-        // this.router.navigate(['user/ads']);
-      },
+      () => {},
       (error) => console.log(error)
     );
   }
@@ -133,10 +126,6 @@ export class UserAdsComponent implements OnInit, OnDestroy {
             }
           });
         });
-
-        // UML notacq s fakt tabl i tabl izmereniq
-
-        // edna fakticheska i nqkolko wektorni izmereniq
       },
       (error) => console.log(error)
     );

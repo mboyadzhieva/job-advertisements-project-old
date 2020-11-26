@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
@@ -47,7 +47,7 @@ export class AdFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$)
     ).subscribe(
       (params) => {
-        const id = params.id; // id is set correctly
+        const id = params.id;
         if (id){
           this.getAd(id);
         }
